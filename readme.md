@@ -2,18 +2,20 @@
 ![F-MbY2FXUAAk21P](https://github.com/bassusteur/milkv-duo-ubuntu/assets/42449683/3dcdbd84-12a6-4c86-969c-92a2e9e92496)
 
 ## Credits
-![great friend julie](https://github.com/tvlad1234)
-![rootfs guide for risc-v](https://github.com/carlosedp/riscv-bringup/blob/master/Ubuntu-Rootfs-Guide.md)
-![DO NOT THE CAT!!!](https://github.com/Mnux9)
+[great friend julie](https://github.com/tvlad1234)
+
+[rootfs guide for risc-v](https://github.com/carlosedp/riscv-bringup/blob/master/Ubuntu-Rootfs-Guide.md)
+
+[DO NOT THE CAT!!!](https://github.com/Mnux9)
 
 ## Setup 
 1. Ubuntu 22.04 LTS installed on a virtual machine
-2. Setup ![duo-buildroot-sdk](https://github.com/milkv-duo/duo-buildroot-sdk#prepare-the-compilation-environment) on your machine
+2. Setup [duo-buildroot-sdk](https://github.com/milkv-duo/duo-buildroot-sdk#prepare-the-compilation-environment) on your machine
 
 ## Before anything else
 ```bash
 # We need to enable a few modules in the kernel configuration before we can continue, so:
-nano ~/duo-buildroot-sdk/build/boards/cv180x/cv1800b_milkv_duo_sd/linux/cvitek_cv1800b_milkv_duo_sd_defconfig
+nano ~/duo-buildroot-sdk/build/boards/cv181x/cv1812cp_milkv_duo256m_sd/linux/cvitek_cv1812cp_milkv_duo256m_sd_defconfig
 
 # and add at the end:
 CONFIG_CGROUPS=y
@@ -33,7 +35,10 @@ CONFIG_SIGNALFD=y
 CONFIG_TIMERFD=y
 CONFIG_EPOLL=y
 CONFIG_IPV6=y
-CONFIG_FANOTIFY
+CONFIG_FANOTIFY=y
+CONFIG_SWAP=y
+CONFIG_TUN=y
+CONFIG_WIREGUARD=y
 
 # optional (enable zram):
 CONFIG_ZSMALLOC=y
